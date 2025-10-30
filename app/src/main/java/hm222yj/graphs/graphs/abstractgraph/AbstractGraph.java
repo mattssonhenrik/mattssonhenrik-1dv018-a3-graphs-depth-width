@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.List;
 
 public abstract class AbstractGraph {
-    int node;
-    Map<Integer, Map<Integer, Double>> adjacent;
+    public int node;
+    public Map<Integer, Map<Integer, Double>> adjacent;
 
     public AbstractGraph(int node) {
         this.node = node;
@@ -21,13 +21,17 @@ public abstract class AbstractGraph {
         return node;
     }
 
+    public void addEdge(int v, int w) {
+        addEdge(v, w, 0.0);
+    }
+
     public boolean hasEdge(int v, int w) {
         return adjacent.get(v).containsKey(w);
     }
 
     public double weight(int v, int w) {
-        Map<Integer, Double> row = adjacent.get(v);
-        return row.get(w);
+        Double weightValue = adjacent.get(v).get(w);
+        return weightValue != null ? weightValue : 0.0; 
     }
 
     public Iterable<Integer> nodes() {
@@ -45,26 +49,22 @@ public abstract class AbstractGraph {
     public Iterable<int[]> edges() {
         List<int[]> list = new ArrayList<>();
         boolean directed = isDirected();
-        for (int u = 0; u < node; u++) {
-            for (int v : adjacent.get(u).keySet()) {
+        for (int v = 0; v < node; v++) {
+            for (int w : adjacent.get(v).keySet()) {
                 if (directed) {
-                    list.add(new int[] { u, v });
+                    list.add(new int[] { v, w });
                 } else {
-                    if (u <= v)
-                        list.add(new int[] { u, v });
+                    if (v <= w)
+                        list.add(new int[] { v, w });
                 }
             }
         }
         return list;
     }
 
-    public void addEdge(int u, int v) {
-        addEdge(u, v, 1.0);
-    }
+    public abstract void addEdge(int v, int w, double weight);
 
-    public abstract void addEdge(int u, int v, double w);
-
-    public abstract void removeEdge(int u, int v);
+    public abstract void removeEdge(int v, int w);
 
     public abstract int degree(int v);
 
