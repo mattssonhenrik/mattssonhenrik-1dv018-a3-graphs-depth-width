@@ -1,10 +1,12 @@
 package hm222yj.graphs.graphs.abstractgraph;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.Collections;
+import java.util.Deque;
 
 public abstract class AbstractGraph {
     public int node;
@@ -109,7 +111,7 @@ public abstract class AbstractGraph {
             parent[i] = -1;
         }
         if (depthFirstBuildPath(from, to, marked, parent)) {
-            return depthFirstBuildPathFromParents(from, to, parent);
+            return depthFirstAndBreadthFirstBuildPathFromParents(from, to, parent);
         }
         return path;
     }
@@ -129,7 +131,68 @@ public abstract class AbstractGraph {
         return false;
     }
 
-    public Iterable<Integer> depthFirstBuildPathFromParents(int from, int to, int[] parent) {
+    // Breadth First metoder
+    public boolean breadthFirstCheckIfPathExists(int from, int to) {
+        if (from == to) {
+            return true;
+        }
+        boolean[] marked = new boolean[node];
+        Deque<Integer> queue = new ArrayDeque<>();
+        marked[from] = true;
+        queue.add(from);
+
+        while (!queue.isEmpty()) {
+            int current = queue.remove();
+            if (current == to) {
+                return true;
+            }
+            for (int neighbor : neighbors(current)) {
+                if (!marked[neighbor]) {
+                    marked[neighbor] = true;
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public Iterable<Integer> breadthFirstGetPath(int from, int to) {
+        List<Integer> path = new ArrayList<>();
+        if (from == to) {
+            path.add(from);
+            return path;
+        }
+
+        boolean[] marked = new boolean[node];
+        int[] parent = new int[node];
+        for (int i = 0; i < node; i++) {
+            parent[i] = -1;
+        }
+
+        Deque<Integer> queue = new ArrayDeque<>();
+        marked[from] = true;
+        queue.add(from);
+
+        while (!queue.isEmpty()) {
+            int current = queue.remove();
+            if (current == to) {
+                
+                return depthFirstAndBreadthFirstBuildPathFromParents(from, to, parent);
+            }
+            for (int neighbor : neighbors(current)) {
+                if (!marked[neighbor]) {
+                    marked[neighbor] = true;
+                    parent[neighbor] = current;
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return path; 
+    }
+
+    // Byggmetod för både DEpth first och Breadth first
+    public Iterable<Integer> depthFirstAndBreadthFirstBuildPathFromParents(int from, int to, int[] parent) {
         List<Integer> reversedPath = new ArrayList<>();
         for (int x = to; x != -1; x = parent[x]) {
             reversedPath.add(x);

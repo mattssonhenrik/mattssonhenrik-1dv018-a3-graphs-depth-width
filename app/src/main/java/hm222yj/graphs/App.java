@@ -106,16 +106,28 @@ public class App {
 
         System.out.println("(Directed) Depth first hasPath 2->3 : " + directedGraph.depthFirstCheckIfPathExists(2, 3));
         System.out.print("(Directed) Depth first path 2->3 : ");
-        for (int v : directedGraph.pathDepthFirst(2, 3))
+        for (int v : directedGraph.depthFirstGetPath(2, 3))
             System.out.print(v + " ");
         System.out.println();
 
-        System.out.println("(Undirected) Depth first hasPath 2->3 : " + unDirectedGraph.depthFirstCheckIfPathExists(2, 3));
+        System.out.println(
+                "(Undirected) Depth first hasPath 2->3 : " + unDirectedGraph.depthFirstCheckIfPathExists(2, 3));
         System.out.print("(Undirected) Depth first path 2->3 : ");
-        for (int v : unDirectedGraph.pathDepthFirst(2, 3))
+        for (int v : unDirectedGraph.depthFirstGetPath(2, 3))
             System.out.print(v + " ");
         System.out.println();
 
+        System.out.println("(Directed) Breadth first hasPath 2->3 : " + directedGraph.breadthFirstCheckIfPathExists(2, 3));
+        System.out.print("(Directed) Breadth first path 2->3 : ");
+        for (int v : directedGraph.breadthFirstGetPath(2, 3))
+            System.out.print(v + " ");
+        System.out.println();
+
+        System.out.println("(Undirected) Breadth first hasPath 2->3 : " + unDirectedGraph.breadthFirstCheckIfPathExists(0, 4));
+        System.out.print("(Undirected) Breadth first path 2->3 : ");
+        for (int v : unDirectedGraph.breadthFirstGetPath(2, 3))
+            System.out.print(v + " ");
+        System.out.println();
 
     }
 }
