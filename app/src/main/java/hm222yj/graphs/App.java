@@ -117,15 +117,15 @@ public class App {
             System.out.print(v + " ");
         System.out.println();
 
-        System.out.println("(Directed) Breadth first hasPath 2->3 : " + directedGraph.breadthFirstCheckIfPathExists(2, 3));
-        System.out.print("(Directed) Breadth first path 2->3 : ");
-        for (int v : directedGraph.breadthFirstGetPath(2, 3))
+        System.out.println("(Directed) Breadth first hasPath 4->6 : " + directedGraph.breadthFirstCheckIfPathExists(2, 3));
+        System.out.print("(Directed) Breadth first path 4->6 : ");
+        for (int v : directedGraph.breadthFirstGetPath(4, 6))
             System.out.print(v + " ");
         System.out.println();
 
-        System.out.println("(Undirected) Breadth first hasPath 2->3 : " + unDirectedGraph.breadthFirstCheckIfPathExists(0, 4));
-        System.out.print("(Undirected) Breadth first path 2->3 : ");
-        for (int v : unDirectedGraph.breadthFirstGetPath(2, 3))
+        System.out.println("(Undirected) Breadth first hasPath 4->6 : " + unDirectedGraph.breadthFirstCheckIfPathExists(4, 6));
+        System.out.print("(Undirected) Breadth first path 4->6 : ");
+        for (int v : unDirectedGraph.breadthFirstGetPath(4, 6))
             System.out.print(v + " ");
         System.out.println();
 
