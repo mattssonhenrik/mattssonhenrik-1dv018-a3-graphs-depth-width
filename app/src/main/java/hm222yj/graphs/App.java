@@ -80,29 +80,29 @@ public class App {
         unDirectedGraph.addEdge(1, 5, 1.2);
         unDirectedGraph.addEdge(4, 8, 3.3);
         unDirectedGraph.addEdge(6, 9, 0.7);
-        System.out.println("Total nodes: " + unDirectedGraph.nodeCount());
-        System.out.println("Total edges: " + unDirectedGraph.edgeCount());
-        System.out.println("Degree for node 1: " + unDirectedGraph.degree(1));
-        System.out.print("Nodes: ");
-        for (int v : unDirectedGraph.nodes())
-            System.out.print(v + " ");
-        System.out.println();
-        System.out.print("Neighbors for node 1: ");
-        for (int w : unDirectedGraph.neighbors(1))
-            System.out.print(w + " ");
-        System.out.println();
-        System.out.print("Edges: ");
-        for (int[] e : unDirectedGraph.edges())
-            System.out.print("(" + e[0] + "-" + e[1] + ") ");
-        System.out.println();
-        System.out.println("The weight of edge (1-3) is: " + unDirectedGraph.weight(1, 3));
-        System.out.println("The weight of edge (1-2) is: " + unDirectedGraph.weight(1, 2));
-        System.out.println("Removing edge between 0 and 1!");
-        unDirectedGraph.removeEdge(0, 1);
-        System.out.print("and now the edges are: ");
-        for (int[] e : unDirectedGraph.edges())
-            System.out.print("(" + e[0] + "-" + e[1] + ") ");
-        System.out.println();
+        // System.out.println("Total nodes: " + unDirectedGraph.nodeCount());
+        // System.out.println("Total edges: " + unDirectedGraph.edgeCount());
+        // System.out.println("Degree for node 1: " + unDirectedGraph.degree(1));
+        // System.out.print("Nodes: ");
+        // for (int v : unDirectedGraph.nodes())
+        //     System.out.print(v + " ");
+        // System.out.println();
+        // System.out.print("Neighbors for node 1: ");
+        // for (int w : unDirectedGraph.neighbors(1))
+        //     System.out.print(w + " ");
+        // System.out.println();
+        // System.out.print("Edges: ");
+        // for (int[] e : unDirectedGraph.edges())
+        //     System.out.print("(" + e[0] + "-" + e[1] + ") ");
+        // System.out.println();
+        // System.out.println("The weight of edge (1-3) is: " + unDirectedGraph.weight(1, 3));
+        // System.out.println("The weight of edge (1-2) is: " + unDirectedGraph.weight(1, 2));
+        // System.out.println("Removing edge between 0 and 1!");
+        // unDirectedGraph.removeEdge(0, 1);
+        // System.out.print("and now the edges are: ");
+        // for (int[] e : unDirectedGraph.edges())
+        //     System.out.print("(" + e[0] + "-" + e[1] + ") ");
+        // System.out.println();
 
         System.out.println("(Directed) Depth first hasPath 2->3 : " + directedGraph.depthFirstCheckIfPathExists(2, 3));
         System.out.print("(Directed) Depth first path 2->3 : ");
